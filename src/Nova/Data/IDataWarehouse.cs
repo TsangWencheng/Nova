@@ -6,10 +6,10 @@ namespace Nova.Data
 {
     public interface IDataWarehouse
     {
-        Task SaveAsync<T, TId>(T entity) where T : IEntity<TId>;
+        Task SaveAsync<T>(T entity);
 
-        Task DeleteAsync<T, TId>(T entity) where T : IEntity<TId>;
+        Task DeleteAsync<T>(T entity);
 
-        Task<IQueryable> QueryAsync<T, TId>() where T : IEntity<TId>;
+        Task<IQueryable> QueryAsync<T>();
     }
 }

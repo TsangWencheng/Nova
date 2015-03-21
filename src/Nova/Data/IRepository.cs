@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Nova.Data
 {
-    public interface IRepository<T, in TId> where T : IEntity<TId>
+    public interface IRepository<T>
     {
         Task SaveAsync(T entity);
 
@@ -13,8 +13,6 @@ namespace Nova.Data
         Task DeleteAsync(T entity);
 
         Task DeleteAllAsync(IEnumerable<T> entity);
-
-        Task<T> FindByIdAsync(TId entityId);
 
         Task<IQueryable> QueryAsync();
     }
