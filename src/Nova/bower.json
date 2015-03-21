@@ -1,0 +1,8 @@
+{
+    "name": "Nova",
+    "private": true,
+    "dependencies": {
+    },
+    "exportsOverride": {
+    }
+}
