@@ -11,7 +11,7 @@ namespace Nova.Test.Data
 
         public TestData(int id,string name,int age)
         {
-            Id= Id;
+            Id= id;
             Name = name;
             Age = age;
         }
