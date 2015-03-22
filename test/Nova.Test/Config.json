@@ -1,0 +1,8 @@
+﻿{
+    "Data": {
+        "MongoDb": {
+            "Server": "mongodb://localhost",
+            "DataBase": "NovaTest"
+        }
+    }
+}
