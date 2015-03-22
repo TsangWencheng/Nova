@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Driver.Builders;
+using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.ConfigurationModel.Json;
 namespace Nova.Data
 {
     /// <summary>
@@ -13,14 +17,16 @@ namespace Nova.Data
     /// </remarks>
     public class MongoDbDataWarehouse : IDataWarehouse
     {
+        private MongoClient client;
+        private string databaseName;
         /// <summary>
         ///     Initialize a new instance of <see cref="MongoDbDataWarehouse" />.
         /// </summary>
         /// <remarks>
         ///     Server address and database name should be loaded form project configuration file:
-        ///     Server address: "Data:MongoDb:Server, Database name: "Data:MongoDb:DataBase".
+        ///     Server address: "Data:MongoDb:Server", Database name: "Data:MongoDb:DataBase".
         /// </remarks>
-        public MongoDbDataWarehouse()
+        public MongoDbDataWarehouse() :this(new Configuration().AddJsonFile("Config.json").Get("Data:MongoDb:Server"), new Configuration().AddJsonFile("Config.json").Get("Data:MongoDb:DataBase"))
         {
         }
 
@@ -35,6 +41,8 @@ namespace Nova.Data
         /// </remarks>
         public MongoDbDataWarehouse(string serverAddress = null, string databaseName = null)
         {
+            this.client = new MongoClient(serverAddress);
+            this.databaseName = databaseName;
         }
 
         /// <summary>
@@ -47,7 +55,9 @@ namespace Nova.Data
         /// <exception cref="ArgumentNullException"><paramref name="entity" /> is null.</exception>
         public Task SaveAsync<T>(T entity)
         {
-            throw new NotImplementedException();
+            return Task.Run(() => {
+                var collection = this.client.GetDatabase(this.databaseName).GetCollection<T>(entity.GetType().Name);
+            });
         }
 
         /// <summary>
