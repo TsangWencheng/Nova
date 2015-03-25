@@ -61,6 +61,13 @@ namespace Nova.Test.Data
             Assert.True(GetTestData().All(td => data.Count(d => d.Id == td.Id) == 1));
         }
 
+        //should if save a null object.
+        [Theory]
+        public async void ShouldThrowIfSaveNull()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(() => _warehouse.SaveAsync<TestData>(null));
+        }
+
         private IMongoCollection<T> GetCollection<T>()
         {
             return _database.GetCollection<T>(typeof(T).Name);
