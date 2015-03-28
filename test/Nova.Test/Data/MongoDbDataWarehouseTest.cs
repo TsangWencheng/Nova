@@ -33,7 +33,7 @@ namespace Nova.Test.Data
         }
 
         //Should return an empty IQueryable is db is empty.
-        [Theory]
+        [Theory(Skip = "This function will be implemented in M2.")]
         public async void ShouldBeEmptyQueryableIfEmptyDb()
         {
             var data = await _warehouse.QueryAsync<TestData>();
@@ -43,7 +43,7 @@ namespace Nova.Test.Data
         }
 
         //Data should be in the database after saved.
-        [Fact]
+        [Fact(Skip = "This function will be implemented in M2.")]
         public async void ShouldBeInDbAfterSaved()
         {
             var data = new TestData(1, "Mongo", 18);
@@ -53,7 +53,7 @@ namespace Nova.Test.Data
         }
 
         //Should get data if data in in the db.
-        [Fact]
+        [Fact(Skip = "This function will be implemented in M2.")]
         public async void ShouldGetDataIfInDb()
         {
             await FillDbAsync();
@@ -62,14 +62,14 @@ namespace Nova.Test.Data
         }
 
         //should throw if save a null object.
-        [Theory]
+        [Theory(Skip = "This function will be implemented in M2.")]
         public async void ShouldThrowIfSaveNull()
         {
             await Assert.ThrowsAsync<ArgumentNullException>(() => _warehouse.SaveAsync<TestData>(null));
         }
 
         //should throw if delete a null object.
-        [Theory]
+        [Theory(Skip = "This function will be implemented in M2.")]
         public async void ShouldThrowIfDeleteNull()
         {
             await Assert.ThrowsAsync<ArgumentNullException>(() => _warehouse.DeleteAsync<TestData>(null));
@@ -77,7 +77,7 @@ namespace Nova.Test.Data
 
         private IMongoCollection<T> GetCollection<T>()
         {
-            return _database.GetCollection<T>(typeof(T).Name);
+            return _database.GetCollection<T>(typeof (T).Name);
         }
 
         private async Task FillDbAsync()
