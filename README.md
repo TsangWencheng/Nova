@@ -8,12 +8,11 @@ References
 - [Capitalization Conventions](https://msdn.microsoft.com/en-us/library/ms229043.aspx)
 - [C# Coding Conventions (C# Programming Guide)](https://msdn.microsoft.com/en-us/library/ff926074.aspx)
 
-```
+``` C# 
 using System;
 using System.Threading.Tasks;
 
 //For namespaces, use Pascal casing.
-
 namespace NamingConversions
 {
     // For classes, enums, use Pascal casing.
@@ -25,10 +24,13 @@ namespace NamingConversions
         //For static menbers, use Pascal casing.
         //For public fields, use Pascak casing.
         public static string Name = "Nova";
+        
         //For private fieldss, use camel case with an unserscore.
-
+        private string _name;
+        
         //For properties, use Pascal casing.
         public string StatusData { get; set; }
+        
         //For methods, use Pascal casing.
         //For parameters, use camel casing.
         public void MyMethod(int myParameter)
