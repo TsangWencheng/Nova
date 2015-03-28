@@ -8,7 +8,7 @@ References
 - [Capitalization Conventions](https://msdn.microsoft.com/en-us/library/ms229043.aspx)
 - [C# Coding Conventions (C# Programming Guide)](https://msdn.microsoft.com/en-us/library/ff926074.aspx)
 
-```
+``` C# 
 using System;
 using System.Threading.Tasks;
 
