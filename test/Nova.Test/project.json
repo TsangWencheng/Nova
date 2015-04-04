@@ -5,6 +5,7 @@
         "xunit.runner.aspnet": "2.0.0-rc3-*",
         "mongocsharpdriver": "2.0.0-rc0",
         "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta3",
+        "Microsoft.AspNet.SignalR.Server": "3.0.0-beta3",
         "Nova": { }
     },
     "commands": {
